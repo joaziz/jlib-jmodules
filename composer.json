@@ -1,0 +1,17 @@
+{
+    "name": "jlib/jmodules",
+    "require": {
+        "jlib/base": "^0.1.6"
+    },
+"autoload": {
+    "psr-4": {
+      "Jlib\\JModules\\": "src/"
+    }
+  },
+    "authors": [
+        {
+            "name": "Yousif Aziz",
+            "email": "yousif.aziz@hive-ad.com"
+        }
+    ]
+}
