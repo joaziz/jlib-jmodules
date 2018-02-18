@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dbfef613932cde168a48b4d4827c4e81",
-    "content-hash": "bb40d078372779338ef881063d312a87",
+    "hash": "efd5ee8eb2acb861db74023f0f3b0298",
+    "content-hash": "0453affcfb597126e6c37f9fc2077543",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -177,16 +177,16 @@
         },
         {
             "name": "jlib/base",
-            "version": "v0.1.6",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jooaziz/Jlib.git",
-                "reference": "4256ffcf6475c69ea3f39d530d578f674a56a5c4"
+                "reference": "ecdb6ff9881ca9976821a4101d29292b27bca25e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jooaziz/Jlib/zipball/4256ffcf6475c69ea3f39d530d578f674a56a5c4",
-                "reference": "4256ffcf6475c69ea3f39d530d578f674a56a5c4",
+                "url": "https://api.github.com/repos/jooaziz/Jlib/zipball/ecdb6ff9881ca9976821a4101d29292b27bca25e",
+                "reference": "ecdb6ff9881ca9976821a4101d29292b27bca25e",
                 "shasum": ""
             },
             "require": {
@@ -219,7 +219,7 @@
                     "email": "en.yousif.aziz@gmail.com"
                 }
             ],
-            "time": "2018-02-15 16:01:20"
+            "time": "2018-02-18 10:50:54"
         },
         {
             "name": "jlib/misc",
