@@ -1,6 +1,5 @@
 {
     "name": "jlib/jmodules",
-  "license": "MIT",
     "require": {
         "jlib/base": ">=0.2.0"
     },

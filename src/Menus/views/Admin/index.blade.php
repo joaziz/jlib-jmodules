@@ -1,75 +1,68 @@
 @extends("Jlib::layouts.dashboard")
 
+@section("css")
+    <style>
+        .uiList {
+            list-style: none;
+
+        }
+
+        .portlet-header {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .sortable2 {
+            min-height: 20px;
+            /*background: rgba(0, 0, 255, 0.24);*/
+        }
+
+        .ui-state-highlight {
+            background: rgba(0, 0, 0, .05);
+            height: 50px;
+            border: dashed thin rgba(0, 0, 0, 0.32);
+        }
+
+        .item > div:not(.item-details) {
+            margin-top: 5px;
+            padding: 1px 11px;
+            background: #eaeaea;
+            border: thin dashed #c3c3c3;
+        }
+
+        .item .txt {
+            display: inline-block;
+            padding-left: 10px;
+        }
+
+        .newItem {
+            opacity: .7;
+            cursor: pointer;
+        }
+    </style>
+@stop
+
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 ">
-            <div class="panel">
-                <div class="panel-header ">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>
-                                <i class="fa fa-table"> </i>
-                                <strong>{{__("admin.Filter")}} </strong>
-                                {{__("admin.table")}}
-                            </h3>
-                        </div>
-
-                    </div>
-
+    <div class="col-lg-12" xmlns="">
+        <div class="col-lg-5">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h3>Menu Maker</h3>
                 </div>
-                <div class="panel-header text-right">
+                <div class="x_content">
+                    <button id="saveMenu" class="btn btn-success pull-right">Save</button>
+                    <div class="clearfix"></div>
                     <hr/>
-                    <a href="{{url("/$scope/$module/create")}}"
-                       class="btn btn-success">{{__("admin.create")." ".__("admin.$module")}}</a>
-                    <hr/>
-                </div>
-
-                <div class="panel-content pagination2 table-responsive">
-                    @if($rows->count())
-                        <table class="table table-hover table-dynamic">
-
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>{{__("admin.name")}}</th><th>{{__("admin.link")}}</th><th>{{__("admin.icon")}}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach( $rows  as $row)
-                                <tr>
-                                    <td>{{@$row->id}}</td>
-                                    <td>{{@$row->name}}</td><td>{{@$row->link}}</td><td>{{@$row->icon}}</td>
-                                    <td>
-
-                                        <a href="{{"$scope/$module/$row->id/edit"}}"
-                                           class="btn btn-primary btn-sm ">
-                                            {{__("admin.edit")}}
-
-                                        </a>
-
-
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                        <div>
-                            {!! $rows->links() !!}
-                        </div>
-                    @else
-                        <div class="alert alert-warning">
-                            {{__('admin.sorry there is no data for now.')}}
-                        </div>
-                    @endif
+                    <ul class="uiList sortable2 mainMenu"></ul>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-
+@stop
+@section("js")
+    <script src="vendor/Jlib/js/Menu/MenuInit.js"></script>
     <script>
-        function aproveRequest($id) {
-            window.location.href = "<?= url("/{$scope}/{$module}/status?s=1&id=") ?>" + $id;
-        }
+
+
     </script>
 @stop
