@@ -1,12 +1,7 @@
-@extends("layout.dashboard")
+@extends("Jlib::layouts.dashboard")
 
-@section('Title', __("admin.create")." ".__("admin.$module"))
+@section('Title', _t("admin.create")." "._t("admin.$module"))
 
-<?php
-
-//dd(session()->all());
-
-?>
 @section('content')
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -21,7 +16,7 @@
     <div class="panel">
         <div class="panel-header">
             <i class="icon-check"></i>
-            <h2>{{__("admin.create")." ".__("admin.$module")}}</h2>
+            <h2>{{_t("admin.create")." "._t("admin.$module")}}</h2>
             <hr/>
         </div>
         <div class="panel-content">

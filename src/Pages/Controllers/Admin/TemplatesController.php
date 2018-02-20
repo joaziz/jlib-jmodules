@@ -1,12 +1,12 @@
 <?php
 
-namespace Jlib\JModules\Menus\Controllers\Admin;
+namespace Jlib\JModules\Pages\Controllers\Admin;
 
 use Jlib\Controller\BaseController;
 
-use Modules\Menus\Models\Menu as Model;
+use Jlib\JModules\Pages\Models\Template as Model;
 
-class MenusController extends BaseController
+class TemplatesController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,7 @@ class MenusController extends BaseController
     public
     function index()
     {
-//        $data["pageTitle"] = _T("admin.menu list");
-//        $data["rows"] = (new Model())->filter(request())->paginate();
-        return $this->view([], "menus::Admin.index");
+        return $this->view(["rows" => Model::paginate()], "pages::template.index");
     }
 
     /**
@@ -31,7 +29,7 @@ class MenusController extends BaseController
     {
         $row = new Model();
 
-        return $this->view(["row" => $row], "menus::Admin.create");
+        return $this->view(["row" => $row], "pages::template.create");
     }
 
     /**
@@ -41,12 +39,12 @@ class MenusController extends BaseController
      * @return \Illuminate\Http\Response
      */
     public
-    function store(Validator $request)
+    function store(ValidatorTemplate $request)
     {
         $init = new InitData($request);
         Model::quickSave($init->getDataForCreate());
-        flash()->success('Your Item Created');
-        return redirect()->to("menus/");
+        flash()->success(_t('admin.Your Item Created'));
+        return redirect()->to(self::getScope().'/'.self::getModule($this));
     }
 
     /**
@@ -60,7 +58,7 @@ class MenusController extends BaseController
     {
         //
         $row = Model::find($id);
-        return $this->view(["row" => $row], "menus::show");
+        return $this->view(["row" => $row], "pages::template.show");
     }
 
     /**
@@ -72,7 +70,7 @@ class MenusController extends BaseController
     public
     function edit($id)
     {
-        return $this->view(["row" => (new Model())->findOrFail($id)], "Admin::edit");
+        return $this->view(["row" => Model::findOrFail($id)], "pages::template.edit");
         //
     }
 
@@ -84,12 +82,12 @@ class MenusController extends BaseController
      * @return \Illuminate\Http\Response
      */
     public
-    function update(Validator $request)
+    function update(ValidatorTemplate $request)
     {
         $init = new InitData($request);
         Model::quickUpdate($init->getDataForEdit());
-        flash()->success('Your Item Updated');
-        return redirect()->to("/menus");
+        flash()->success(_t('admin.Your Item Updated'));
+        return redirect()->to(self::getScope().'/'.self::getModule($this));
     }
 
     /**
@@ -104,8 +102,8 @@ class MenusController extends BaseController
     {
         $row = Model::find($id);
         $row->delete();
-        flash()->success('Your Item Deleted');
-        return redirect()->to("/menus");
+        flash()->success(_t('admin.Your Item Deleted'));
+        return redirect()->to(self::getScope().'/'.self::getModule($this));
     }
 
 

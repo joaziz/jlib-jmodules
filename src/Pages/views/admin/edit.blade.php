@@ -1,12 +1,7 @@
-@extends("layout.dashboard")
+@extends("Jlib::layouts.dashboard")
 
-@section('Title', __("admin.create")." ".__("admin.$module"))
+@section('Title', _t("admin.edit")." "._t("admin.$module"))
 
-<?php
-
-//dd(session()->all());
-
-?>
 @section('content')
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -17,18 +12,25 @@
             </ul>
         </div>
     @endif
-
     <div class="panel">
         <div class="panel-header">
             <i class="icon-check"></i>
-            <h2>{{__("admin.create")." ".__("admin.$module")}}</h2>
+
+            <h2>{{_t("admin.edit")." "._t("admin.$module")}}</h2>
             <hr/>
         </div>
         <div class="panel-content">
-            {!! Form::model($row,['url' => $scope.'/'.$module, 'method' => 'post','class'=>'form-horizontal style-form','enctype'=>'multipart/form-data'] ) !!}
+            {!! Form::model($row,['url' => $scope.'/'.$module.'/'.$row->id, 'method' => 'post','class'=>'form-horizontal style-form','enctype'=>'multipart/form-data'] ) !!}
+            {{ method_field('PUT') }}
+            {!! Form::hidden("id",$row->id) !!}
+
             @include("$module::admin.form")
-            {!! Form::submit(__('admin.Save') ,['class' => 'btn btn-success']) !!}
+
+            <hr/>
+            {!! Form::submit(_t('admin.Save') ,['class' => 'btn btn-success']) !!}
+
             {!! Form::close() !!}
         </div>
     </div>
+
 @stop
